@@ -1,0 +1,144 @@
+/* GG Buddy sitesinin ortak biçimi. */
+:root {
+  --bg: #ffffff;
+  --text: #16131f;
+  --muted: #5b5670;
+  --accent: #6d4aff;
+  --card: #f4f2fb;
+  --border: #e2def0;
+  --danger: #c62828;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #121017;
+    --text: #f1eff7;
+    --muted: #aaa4bd;
+    --accent: #9c85ff;
+    --card: #1c1924;
+    --border: #2c2838;
+    --danger: #ff6b6b;
+  }
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font:
+    16px/1.6 system-ui,
+    -apple-system,
+    'Segoe UI',
+    Roboto,
+    sans-serif;
+}
+main {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 32px 16px 64px;
+}
+.brand {
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: 0.5px;
+}
+h1 {
+  font-size: 28px;
+  line-height: 1.25;
+  margin: 8px 0 12px;
+}
+h2 {
+  font-size: 20px;
+  margin: 32px 0 8px;
+}
+p,
+li {
+  color: var(--text);
+}
+.muted {
+  color: var(--muted);
+}
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin: 12px 0;
+}
+.card > :first-child {
+  margin-top: 0;
+}
+.card > :last-child {
+  margin-bottom: 0;
+}
+ol,
+ul {
+  padding-left: 22px;
+}
+li + li {
+  margin-top: 4px;
+}
+a {
+  color: var(--accent);
+}
+.path {
+  font-weight: 600;
+}
+.button {
+  display: inline-block;
+  border: 0;
+  border-radius: 10px;
+  padding: 12px 20px;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  background: var(--accent);
+  color: #ffffff;
+}
+.button.danger {
+  background: var(--danger);
+}
+.button.secondary {
+  background: transparent;
+  color: var(--muted);
+  padding-left: 8px;
+  padding-right: 8px;
+}
+.button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  margin-top: 12px;
+}
+.notice {
+  border-left: 4px solid var(--accent);
+}
+.notice.error {
+  border-left-color: var(--danger);
+}
+[hidden] {
+  display: none !important;
+}
+footer {
+  margin-top: 48px;
+  font-size: 14px;
+}
+.brand {
+  text-decoration: none;
+}
+nav.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+  margin-bottom: 8px;
+}
+.legal p {
+  margin: 0 0 8px;
+}

@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>GG Buddy — Hesap ve verilerin silinmesi</title>
+    <meta
+      name="description"
+      content="GG Buddy hesabınızı ve verilerinizi nasıl silebileceğiniz; neyin silinip neyin saklandığı." />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main>
+      <a class="brand" href="./">GG Buddy</a>
+      <h1>Hesabınızı ve verilerinizi silme</h1>
+      <p class="muted">
+        Bu sayfa, Android için GG Buddy uygulamasındaki hesabınızı ve size ait verileri nasıl
+        sildirebileceğinizi anlatır.
+      </p>
+
+      <h2>1. Uygulamanın içinden (hemen)</h2>
+      <div class="card">
+        <ol>
+          <li>GG Buddy uygulamasını açın ve Steam ile giriş yapın.</li>
+          <li><span class="path">Profil</span> sekmesine gidin.</li>
+          <li>En alttaki <span class="path">Hesabımı sil</span> bağlantısına dokunun.</li>
+          <li><span class="path">Hesabımı kalıcı olarak sil</span> düğmesine basıp onaylayın.</li>
+        </ol>
+        <p class="muted">Hesabınız ve verileriniz o anda silinir.</p>
+      </div>
+
+      <h2 id="web">2. Bu sayfadan, Steam ile giriş yaparak (hemen)</h2>
+      <div class="card" id="web-start">
+        <p>
+          Uygulamayı kaldırdıysanız hesabınızı buradan silebilirsiniz. Hesabın size ait olduğunu
+          Steam’in kendi giriş sayfası doğrular; şifreniz yalnızca Steam’e girilir.
+        </p>
+        <div class="actions">
+          <button class="button" id="start-button" type="button">Steam ile giriş yap</button>
+        </div>
+      </div>
+      <div class="card" id="web-busy" hidden>
+        <p>Lütfen bekleyin…</p>
+      </div>
+      <div class="card notice" id="web-confirm" hidden>
+        <p><strong id="confirm-name"></strong> olarak giriş yaptınız.</p>
+        <p>
+          <strong>Hesabınız ve aşağıdaki tüm verileriniz kalıcı olarak silinecek.</strong> Bu işlem
+          geri alınamaz.
+        </p>
+        <div class="actions">
+          <button class="button danger" id="delete-button" type="button">
+            Hesabımı kalıcı olarak sil
+          </button>
+          <button class="button secondary" id="cancel-button" type="button">Vazgeç</button>
+        </div>
+      </div>
+      <div class="card notice" id="web-done" hidden>
+        <p><strong>Hesabınız ve verileriniz silindi.</strong></p>
+        <p class="muted">
+          Steam hesabınız etkilenmedi. İsterseniz daha sonra Steam ile yeniden üye olabilirsiniz.
+        </p>
+      </div>
+      <div class="card notice error" id="web-error" hidden>
+        <p id="error-text"></p>
+        <div class="actions">
+          <button class="button secondary" id="retry-button" type="button">Tekrar dene</button>
+        </div>
+      </div>
+
+      <h2>3. E-posta ile</h2>
+      <div class="card">
+        <p>
+          Steam hesabınıza erişemiyorsanız ya da hesabınız askıya alındıysa
+          <a href="mailto:plut.appsupport@gmail.com?subject=Hesap%20silme"
+            >plut.appsupport@gmail.com</a
+          >
+          adresine <strong>“Hesap silme”</strong> konulu bir e-posta gönderin ve Steam profilinizin
+          bağlantısını ekleyin.
+        </p>
+        <p class="muted">
+          Başkasının hesabının silinmesini önlemek için, hesabın size ait olduğunu doğrulamanızı
+          isteriz: yanıtımızda göndereceğimiz kısa bir kodu bir süreliğine Steam profil adınıza ya
+          da profil özetinize eklemeniz yeterlidir. Doğrulamadan sonra hesabınız en geç 30 gün
+          içinde silinir ve size bilgi verilir.
+        </p>
+      </div>
+
+      <h2>Silinen veriler</h2>
+      <ul>
+        <li>
+          Profiliniz, doğum yılınız ve Steam’den alınan bilgiler (ad, profil fotoğrafı, seviye vb.)
+        </li>
+        <li>Oyun kütüphaneniz ve öne çıkan oyunlarınız</li>
+        <li>Gönderdiğiniz ve aldığınız davetler, eşleşmeleriniz</li>
+        <li>Tüm sohbetleriniz ve mesajlarınız (karşı taraftan da silinir)</li>
+        <li>Engellediğiniz oyuncular ve bildirim kayıtlarınız</li>
+      </ul>
+
+      <h2>Saklanan veriler</h2>
+      <ul>
+        <li>
+          Başka kullanıcılar hakkında yaptığınız şikâyetler, inceleme için kimliğinizle bağı
+          kaldırılarak saklanır.
+        </li>
+        <li>
+          Hesabınız kurallara aykırılık nedeniyle askıya alınmışsa, Steam kimlik numaranız ve askı
+          gerekçesi, aynı hesapla yeniden kayıt olunmasını önlemek için askı sürdüğü müddetçe
+          saklanır.
+        </li>
+        <li>
+          5651 sayılı Kanun gereği tutulan trafik kayıtları (IP adresi, işlemin zamanı ve türü;
+          mesaj içeriği değil) 2 yıl boyunca ayrı, erişimi kısıtlı ve değiştirilemez şekilde
+          saklanır, süre dolunca silinir.
+        </li>
+      </ul>
+
+      <p class="muted">
+        Steam hesabınız bu işlemden etkilenmez. Daha sonra Steam ile yeniden giriş yaparsanız
+        sıfırdan yeni bir GG Buddy hesabı açılır.
+      </p>
+
+      <footer class="muted">
+        <nav class="links">
+          <a href="./">Ana sayfa</a>
+          <a href="gizlilik.html">Gizlilik ve aydınlatma metni</a>
+          <a href="kullanim-sartlari.html">Kullanım şartları</a>
+          <a href="hesap-silme.html">Hesap silme</a>
+        </nav>
+        Sorularınız için:
+        <a href="mailto:plut.appsupport@gmail.com">plut.appsupport@gmail.com</a>
+        <br />
+        GG Buddy, Valve Corporation ile bağlantılı değildir. Steam, Valve Corporation’ın ticari
+        markasıdır.
+      </footer>
+    </main>
+    <script src="config.js"></script>
+    <script>
+      (() => {
+        const config = window.GGBUDDY_CONFIG;
+        const STEAM_AUTH = `${config.supabaseUrl}/functions/v1/steam-auth`;
+        const STORAGE_KEY = 'ggbuddy.delete.verifier';
+
+        const ERRORS = {
+          not_member:
+            'Bu Steam hesabıyla açılmış bir GG Buddy üyeliği yok; silinecek bir veri bulunmuyor.',
+          suspended:
+            'Bu Steam hesabı askıya alındığı için buradan silinemiyor. Aşağıdaki e-posta yolunu kullanabilirsiniz.',
+          cancelled: 'Steam girişi tamamlanmadı.',
+          expired: 'Giriş süresi doldu. Lütfen tekrar deneyin.',
+          failed: 'Bir şeyler ters gitti. Biraz sonra tekrar deneyin.',
+        };
+
+        const panels = ['web-start', 'web-busy', 'web-confirm', 'web-done', 'web-error'];
+        function show(id) {
+          for (const panel of panels) document.getElementById(panel).hidden = panel !== id;
+        }
+        function fail(code) {
+          document.getElementById('error-text').textContent = ERRORS[code] || ERRORS.failed;
+          show('web-error');
+          document.getElementById('web').scrollIntoView();
+        }
+
+        // Tarayıcı deposu kapalı olabilir (gizli pencere); hata vermeden geç.
+        const store = {
+          get() {
+            try {
+              return sessionStorage.getItem(STORAGE_KEY);
+            } catch {
+              return null;
+            }
+          },
+          set(value) {
+            try {
+              sessionStorage.setItem(STORAGE_KEY, value);
+            } catch {}
+          },
+          clear() {
+            try {
+              sessionStorage.removeItem(STORAGE_KEY);
+            } catch {}
+          },
+        };
+
+        function base64Url(bytes) {
+          let binary = '';
+          for (const b of bytes) binary += String.fromCharCode(b);
+          return btoa(binary).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+        }
+
+        // Uygulamadaki gibi: verifier tarayıcıda kalır, sunucuya yalnızca özeti gider.
+        async function createPkcePair() {
+          const verifier = base64Url(crypto.getRandomValues(new Uint8Array(32)));
+          const digest = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(verifier));
+          return { verifier, challenge: base64Url(new Uint8Array(digest)) };
+        }
+
+        async function startSignIn() {
+          show('web-busy');
+          try {
+            const { verifier, challenge } = await createPkcePair();
+            store.set(verifier);
+            const redirect = `${location.origin}${location.pathname}`;
+            const params = new URLSearchParams({ redirect, challenge, intent: 'delete' });
+            location.assign(`${STEAM_AUTH}/start?${params}`);
+          } catch {
+            fail('failed');
+          }
+        }
+
+        async function postJson(url, body, token) {
+          const headers = { 'Content-Type': 'application/json', apikey: config.publishableKey };
+          if (token) headers.Authorization = `Bearer ${token}`;
+          const res = await fetch(url, { method: 'POST', headers, body: JSON.stringify(body) });
+          const data = await res.json().catch(() => null);
+          return { ok: res.ok, status: res.status, data };
+        }
+
+        let session = null;
+
+        async function openSession(tokenHash) {
+          const verified = await postJson(`${config.supabaseUrl}/auth/v1/verify`, {
+            type: 'magiclink',
+            token_hash: tokenHash,
+          });
+          if (!verified.ok || !verified.data?.access_token) return fail('expired');
+          session = verified.data;
+
+          let name = 'Steam hesabınız';
+          try {
+            const res = await fetch(
+              `${config.supabaseUrl}/rest/v1/profiles?select=display_name&id=eq.${session.user.id}`,
+              {
+                headers: {
+                  apikey: config.publishableKey,
+                  Authorization: `Bearer ${session.access_token}`,
+                },
+              }
+            );
+            const rows = await res.json();
+            if (Array.isArray(rows) && rows[0]?.display_name) name = rows[0].display_name;
+          } catch {}
+          document.getElementById('confirm-name').textContent = name;
+          show('web-confirm');
+          document.getElementById('web').scrollIntoView();
+        }
+
+        async function deleteAccount() {
+          if (!session) return fail('expired');
+          document.getElementById('delete-button').disabled = true;
+          show('web-busy');
+          const result = await postJson(
+            `${config.supabaseUrl}/rest/v1/rpc/delete_account`,
+            {},
+            session.access_token
+          ).catch(() => ({ ok: false }));
+          session = null;
+          if (!result.ok) return fail('failed');
+          show('web-done');
+        }
+
+        async function cancel() {
+          if (session) {
+            // Oturumu sunucuda da kapat.
+            await postJson(`${config.supabaseUrl}/auth/v1/logout`, {}, session.access_token).catch(
+              () => null
+            );
+          }
+          session = null;
+          show('web-start');
+        }
+
+        // Steam'den dönüş: kod ya da hata adreste gelir; adres hemen temizlenir.
+        async function handleReturn() {
+          const params = new URLSearchParams(location.search);
+          const error = params.get('error');
+          let tokenHash = params.get('token_hash');
+          const verifier = store.get();
+          if (!error && !tokenHash && !verifier) return;
+
+          history.replaceState(null, '', location.pathname + location.hash);
+          show('web-busy');
+          store.clear();
+
+          if (error) return fail(error);
+
+          // Yönlendirmede kod yoksa (ör. sekme kapandı) gizli değerle sunucudan alınır.
+          if (!tokenHash && verifier) {
+            const claimed = await postJson(`${STEAM_AUTH}/claim`, { verifier }).catch(() => null);
+            if (claimed?.data?.error) return fail(claimed.data.error);
+            tokenHash = claimed?.data?.token_hash ?? null;
+          }
+          if (!tokenHash) return show('web-start');
+          await openSession(tokenHash);
+        }
+
+        document.getElementById('start-button').addEventListener('click', startSignIn);
+        document.getElementById('retry-button').addEventListener('click', () => show('web-start'));
+        document.getElementById('delete-button').addEventListener('click', deleteAccount);
+        document.getElementById('cancel-button').addEventListener('click', cancel);
+        handleReturn().catch(() => fail('failed'));
+      })();
+    </script>
+  </body>
+</html>
